@@ -12,6 +12,9 @@ const ShimmeringH1 = styled.h1`
   font-size: 9rem;
   color: transparent;
   letter-spacing: -12px;
+  /* The travel distance must equal the gradient tile, or the loop snaps mid-pattern.
+     The media queries below change the element width, so the tile is pinned instead. */
+  background-size: 1000px 100%;
   animation: shineTitle 3s linear infinite;
   @keyframes shineTitle {
     0% {
