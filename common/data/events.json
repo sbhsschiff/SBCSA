@@ -1,0 +1,100 @@
+[
+    {
+        "title": "College and University Visits",
+        "items": [
+            {
+                "name": "New Jersey Institute of Technology (Ying Wu College of Computing)",
+                "description": "NJIT CS faculty provided an overview of their curriculum and the future of CS in the job market. They also ran a specialized joint event with the forensics department and Immersive eXtended Reality Lab. We typically have a chance to review student projects from the XR / AR lab."
+            },
+            {
+                "name": "Rutgers University",
+                "description": "Rutgers University invited us to participate in a Data Structures (CS112) lecture, and participate in a Q&A session with the professor who teaches it. The entire group had dinner on campus after the lecture."
+            },
+            {
+                "name": "The College of New Jersey",
+                "description": "They explained how the evolving job market has created a number of specializations in CS, and provided some information on the majors that they offer to provide those skills. TCNJ provided a tour of their amazing facilities, and we had a chance to speak with a student panel and review student projects."
+            },
+            {
+                "name": "Stevens Institute of Technology",
+                "description": "We were hosted by Stevens to hear about their CS program, and receive a student-driven tour. They provided us with a presentation about distinguished alumni and how they differentiate themselves from other colleges."
+            },
+            {
+                "name": "Princeton High Performance Computing Research Center",
+                "description": "Our students had the opportunity to tour the high-performance computing center for Princeton University. Princeton professors use this research and computing center for a variety of research projects including advanced biology and astrophysics applications."
+            }
+        ]
+    },
+    {
+        "title": "Industry Visits and Guest Speakers",
+        "items": [
+            {
+                "name": "Google NYC",
+                "description": "We visited Google NYC for a campus tour, presentation from former students, Q&A session, and lunch with Google engineers."
+            },
+            {
+                "name": "Bloomberg Data Center",
+                "description": "Several engineers from Bloomberg's data center visited us to talk about all of the hardware, software, and innovative ideas required for near perfect uptime."
+            },
+            {
+                "name": "Latent AI",
+                "description": "Latent AI visited us for a presentation centered around computer vision as well as a demo. The session also featured a Q&A segment, allowing students to explore current trends in the field of artificial intelligence."
+            },
+            {
+                "name": "Lockheed Martin",
+                "description": "Lockheed Martin provided our students with an overview for the production and engineering of their aerospace, defense, security, and technology products. Our students also participated in an engineering activity that focused on production methodology, and how to create an efficient production line."
+            },
+            {
+                "name": "AI Ethics Lab",
+                "description": "Dr. Walker visited us from the AI Ethics Lab at Rutgers University to speak with our students about the importance of ethics when training and using AI models."
+            },
+            {
+                "name": "Guest Speakers (Parents): Google and Salesforce",
+                "description": "Parents from South Brunswick who work at Google and Salesforce visited to share insights into careers in the technology sector and to discuss the growing impact of artificial intelligence on the industry."
+            }
+        ]
+    },
+    {
+        "title": "Alumni",
+        "items": [
+            {
+                "name": "Alumni Panel",
+                "description": "A group of 20+ SBHS alumni came back to speak with our students about college, graduate school, and industry experiences."
+            },
+            {
+                "name": "Distinguished Alumni",
+                "description": "When possible, our alumni that work in industry will stop in to talk to students about job hunting, current trends in technology, and how to stand out from other job applicants."
+            }
+        ]
+    },
+    {
+        "title": "Competitions",
+        "items": [
+            {
+                "name": "Lockheed Martin Code Quest® and CYBERQUEST® Competitions",
+                "description": "Our students participated in a day of specialized coding challenges, and a day of cyber security exercises where they challenge students from all over the world. Our teams took home 2nd and 3rd place in the advanced division for the Code Quest® Competition."
+            }
+        ]
+    },
+    {
+        "title": "College Credit and Career Pathways",
+        "items": [
+            {
+                "name": "Ramapo College",
+                "description": "Our students were allowed to take Web Application Development (a 300 level course) virtually and receive credit directly from Ramapo College. This course covered a variety of client and server development technologies. We are looking to add new courses in the future for virtual attendance."
+            },
+            {
+                "name": "Lockheed Martin Apprenticeship",
+                "description": "Lockheed Martin also offers our students the chance to apply as an apprentice engineer right after graduation. Students can work at Lockheed Martin full time and continue with college part-time during the experience."
+            }
+        ]
+    },
+    {
+        "title": "Community Outreach",
+        "items": [
+            {
+                "name": "Elementary Schools",
+                "description": "Our students visited all of the elementary schools in the district, and taught an introductory lesson on computer programming for all of the 5th grade students."
+            }
+        ]
+    }
+]
