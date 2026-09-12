@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useDebounce } from "use-debounce";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import Element from "./Element";
@@ -28,7 +28,7 @@ const Animate: React.FC<AnimateProps> = ({ children }) => {
         setViewportWidth(window.innerWidth);
     }, []);
 
-    const [hasScrolled, setHasScrolled] = useState(false);
+    const hasScrolledRef = useRef(false);
     const pathname = usePathname();
 
     const handleResetScrollTrigger = useCallback(() => {
@@ -41,20 +41,22 @@ const Animate: React.FC<AnimateProps> = ({ children }) => {
         ScrollTrigger.refresh();
     }, [pathname]);
 
-    const handleResetScrollTriggerOnScroll = useCallback(() => {
-        ScrollTrigger.refresh();
-        setHasScrolled(true);
-    }, []);
-
+    // ScrollTrigger.refresh() recalculates every trigger and forces a synchronous
+    // layout, so it has to run at most once here. Gating it on React state meant
+    // every scroll event that landed before the re-render ran another refresh --
+    // dozens of forced reflows in the first moments of scrolling. A ref closes
+    // that window, and the listener is passive so it can never block scrolling.
     useEffect(() => {
-        if (!hasScrolled)
-            window.addEventListener("scroll", handleResetScrollTriggerOnScroll);
-        return () =>
-            window.removeEventListener(
-                "scroll",
-                handleResetScrollTriggerOnScroll
-            );
-    }, [handleResetScrollTriggerOnScroll, hasScrolled]);
+        const onFirstScroll = () => {
+            if (hasScrolledRef.current) return;
+            hasScrolledRef.current = true;
+            window.removeEventListener("scroll", onFirstScroll);
+            ScrollTrigger.refresh();
+        };
+
+        window.addEventListener("scroll", onFirstScroll, { passive: true });
+        return () => window.removeEventListener("scroll", onFirstScroll);
+    }, []);
 
     useEffect(() => {
         window.addEventListener("resize", handleResize);

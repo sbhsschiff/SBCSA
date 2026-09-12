@@ -23,9 +23,11 @@ const Navbar = () => {
                 />
             </Link> */}
 
-      <ul className="flex space-x-5">
+      <ul className="flex flex-wrap justify-center gap-x-5 gap-y-1 text-sm md:text-base">
         <NavLinkElement href="/" title="Home"></NavLinkElement>
         <NavLinkElement href="/courses" title="courses"></NavLinkElement>
+        <NavLinkElement href="/artificial-intelligence" title="artificial intelligence"></NavLinkElement>
+        <NavLinkElement href="/research" title="research"></NavLinkElement>
         {/* <NavLinkElement href="/projects" title="projects"></NavLinkElement> */}
         <NavLinkElement href="/gallery" title="gallery"></NavLinkElement>
         <NavLinkElement href="/faq" title="faq"></NavLinkElement>

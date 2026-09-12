@@ -13,7 +13,7 @@ background-image: linear-gradient(90deg, #8C8796 0%, white 40%, #8C8796 60%);
   -webkit-background-clip: text;
   background-clip: text;
   max-width: 100%;
-  font-size: clamp(2rem, 6vw, 5.25rem);
+  font-size: clamp(1.5rem, 5vw, 4.5rem);
   line-height: 1.1;
   letter-spacing: -0.045em;
   color: transparent;
@@ -33,7 +33,7 @@ export default function Home() {
     <Animate>
       <header className="overflow-hidden relative p-8 w-screen min-h-screen justify-center max-w-screen-xl flex flex-col items-center">
         <Animate.Element 
-          className='absolute w-full h-full top-0 left-0'
+          className='absolute w-full h-full top-0 left-0 transition-transform'
           onActivatedClasses='scale-[2] duration-[1s] delay-500'
           onDeactivatedClasses='scale-[0.75]'
         >
@@ -46,11 +46,13 @@ export default function Home() {
           />
         </Animate.Element>
         <Animate.Element
-          className='z-30' 
-          onActivatedClasses='scale-1 duration-500 delay-500'
+          className='z-30 transition-transform' 
+          onActivatedClasses='scale-100 duration-500 delay-500'
           onDeactivatedClasses='scale-[0.5]'
         >
+        <div className="flex flex-row items-start gap-4 md:gap-6 lg:gap-8">
         <Animate.Element 
+          className='shrink-0 -mt-2 md:-mt-4 lg:-mt-6'
           onDeactivatedClasses='opacity-0'
           onActivatedClasses='opacity-100 transition-opacity duration-500'
         >
@@ -59,6 +61,7 @@ export default function Home() {
               height={150}
               alt="CSA Logo"
               src="/logo.png"
+              className="w-16 md:w-24 lg:w-[150px] h-auto"
           />
         </Animate.Element>
         <Animate.Element
@@ -69,6 +72,7 @@ export default function Home() {
             Academy of Computer Science<br/>and Artificial Intelligence
           </ShimmeringH1>
         </Animate.Element>
+        </div>
         <Animate.Element
           onDeactivatedClasses='opacity-0'
           onActivatedClasses='opacity-100 transition-opacity duration-500 delay-200'
