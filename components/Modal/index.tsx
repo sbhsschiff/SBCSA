@@ -1,5 +1,5 @@
 import React, { ReactElement, useEffect } from "react";
-// import { XIcon } from "@heroicons/react/outline";
+import { FaTimes } from "react-icons/fa";
 import clsx from "clsx";
 
 export interface ModalProps {
@@ -7,6 +7,7 @@ export interface ModalProps {
     fullWidth?: boolean;
     setOpen: (e: boolean) => void;
     children?: ReactElement;
+    className?: string;
 }
 
 const Modal: React.FC<ModalProps> = ({
@@ -14,6 +15,7 @@ const Modal: React.FC<ModalProps> = ({
     setOpen,
     children,
     fullWidth = false,
+    className,
 }) => {
     useEffect(() => {
         if (open) document.body.style.overflowY = "hidden";
@@ -68,7 +70,8 @@ const Modal: React.FC<ModalProps> = ({
                         style={{ borderColor: "rgba(255, 255, 255, 0.1)" }}
                         className={clsx(
                             "bg-black h-min p-3 relative bg-dark-grey-primary max-w-6xl my-auto rounded-md shadow border-[1px] border-solid",
-                            fullWidth && "w-full"
+                            fullWidth && "w-full",
+                            className
                         )}
                     >
                         <div className="flex z-50 justify-between [&>*]:transition-opacity [&>*]:hover:opacity-50 items-center p-3 absolute top-0 right-0">
@@ -82,7 +85,7 @@ const Modal: React.FC<ModalProps> = ({
                                 className="text-gray-400 bg-transparent border-b-4 border-transparent rounded-lg text-sm p-1.5 ml-auto inline-flex items-center"
                                 data-modal-toggle="small-modal"
                             >
-                                {/* <XIcon style={{ width: 22.5 }} /> */}
+                                <FaTimes size={22.5} />
                             </button>
                         </div>
                         {children && children}

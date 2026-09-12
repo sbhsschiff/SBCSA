@@ -1,50 +1,40 @@
+import Link from "next/link";
+import { notFound } from "next/navigation";
 import GalleryStrip from "@/components/Gallery/GalleryStrip";
-import { classes } from "@/common/data/gallery.json";
-import GalleryContainer from "@/components/Gallery/container";
-import fs from "fs/promises";
-import path from "path";
-import { IPost } from "@/components/Gallery/Post";
+import MasonryGrid from "@/components/Gallery/MasonryGrid";
+import { getPhotos, getYears } from "@/components/Gallery/photos";
 
-interface IClass {
-    year: number;
-    posts: IPost[];
-}
-
-const YearGallery = async ({ params } : { params: Promise<{ year: string }> }) => {
+const YearGallery = async ({ params }: { params: Promise<{ year: string }> }) => {
     const { year } = await params;
-    const data = classes as IClass[];
-    const currentClass = data.find((c) => c.year.toString() === year);
+    const photos = getPhotos(year);
 
-    // Read each post's images off disk. Builds a new array rather than mutating
-    // the imported JSON, which is module-level and shared across requests.
-    const posts = await Promise.all(
-        (currentClass?.posts ?? []).map(async (post) => {
-            const postDir = path.join(process.cwd(), `public/gallery/${year}/${post.id}`);
-            const entries = await fs.readdir(postDir).catch(() => [] as string[]);
-
-            return {
-                ...post,
-                images: entries
-                    .filter((img) => img.endsWith(".jpg"))
-                    .map((img) => ({ src: `/gallery/${year}/${post.id}/${img}` })),
-            };
-        })
-    );
+    if (photos.length === 0) notFound();
 
     return (
-        <div className="h-screen w-screen relative">
+        <div className="min-h-screen w-screen relative pb-16">
             <GalleryStrip className="mt-4 absolute top-12" />
-            <GalleryContainer 
-                slides={posts}
-            />
+            <div className="mt-36 px-6 md:px-12">
+                <header className="mb-8">
+                    <Link
+                        href="/gallery"
+                        className="text-[rgba(255,255,255,0.6)] hover:text-white transition-colors text-sm uppercase tracking-wide"
+                    >
+                        &larr; All years
+                    </Link>
+                    <p className="text-white text-lg font-light uppercase mt-4">Class of</p>
+                    <h1 className="text-white text-6xl font-bold">{year}</h1>
+                    <p className="text-[rgba(255,255,255,0.6)] mt-2">
+                        {photos.length} photos
+                    </p>
+                </header>
+                <MasonryGrid year={year} photos={photos} />
+            </div>
         </div>
-    )
-}
+    );
+};
 
 export async function generateStaticParams() {
-    return classes
-        .filter((c) => c.posts.length > 0)
-        .map(({ year }) => ({ year: year.toString() }));
+    return getYears().map((year) => ({ year }));
 }
 
 export default YearGallery;
