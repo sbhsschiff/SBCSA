@@ -38,9 +38,9 @@ const PostGallery : React.FC<IPostGalleryProps> = ({ slides }) => {
                        <Image
                             src={src || ""}
                             alt={"Instagram Post"}
-                            layout="fill"
-                            className="object-top"
-                            objectFit="contain"
+                            fill
+                            sizes="(max-width: 768px) 100vw, 50vw"
+                            className="object-top object-contain"
                         />
                     </div>
                 ))}

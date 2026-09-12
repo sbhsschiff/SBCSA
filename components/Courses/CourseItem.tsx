@@ -40,10 +40,10 @@ export default function CourseItem({ courseInfo }: CourseItemProps) {
         }}
         className="w-10/12"
       >
-        <div className="bg-[#0f0f0f] shadow-md shadow-zinc-800 text-white  outline-1 gap-5 items-center outline-zinc-800 flex flex-row w-full px-5 py-5 rounded-xl">
+        <div className="bg-zinc-800 shadow-md shadow-zinc-950 text-white  outline-1 gap-5 items-center outline-zinc-700 flex flex-row w-full px-5 py-5 rounded-xl">
           {courseInfo.image_path && (
             <div className="flex-shrink-0 hidden lg:block">
-              <Image src={courseInfo.image_path} alt={""} width={150} height={150} quality={50} className={"rounded-md"} />
+              <Image src={courseInfo.image_path} alt={""} width={150} height={150} className={"rounded-md"} />
             </div>
           )}
           <div className="flex flex-col gap-3">

@@ -8,7 +8,7 @@ import gsap from "gsap";
 import Scrub from "./Scrub";
 import { withAnimateBase } from "./withAnimateBase";
 import isEqual from "react-fast-compare";
-import Router from "next/router";
+import { usePathname } from "next/navigation";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -29,25 +29,17 @@ const Animate: React.FC<AnimateProps> = ({ children }) => {
     }, []);
 
     const [hasScrolled, setHasScrolled] = useState(false);
+    const pathname = usePathname();
 
     const handleResetScrollTrigger = useCallback(() => {
         ScrollTrigger.refresh();
     }, []);
 
-    useEffect(() => {
-        Router.events.on("routeChangeStart", handleResetScrollTrigger);
-        Router.events.on("routeChangeComplete", handleResetScrollTrigger);
-        Router.events.on("routeChangeError", handleResetScrollTrigger);
-        return () => {
-            Router.events.off("routeChangeStart", handleResetScrollTrigger);
-            Router.events.off("routeChangeComplete", handleResetScrollTrigger);
-            Router.events.off("routeChangeError", handleResetScrollTrigger);
-        };
-    }, [handleResetScrollTrigger]);
-
+    // The App Router has no equivalent of the Pages Router's Router.events, so
+    // refresh on mount and again whenever the path changes.
     useEffect(() => {
         ScrollTrigger.refresh();
-    }, []);
+    }, [pathname]);
 
     const handleResetScrollTriggerOnScroll = useCallback(() => {
         ScrollTrigger.refresh();

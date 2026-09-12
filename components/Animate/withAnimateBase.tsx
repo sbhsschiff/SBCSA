@@ -3,12 +3,10 @@
 import React, { useEffect, useContext } from "react";
 import { AnimateContext } from ".";
 
-export const withAnimateBase = <P extends object, R = HTMLDivElement>(
+export const withAnimateBase = <P extends object>(
     Component: React.ComponentType<P>
 ): React.FC<P> => {
-    // TODO: Remove eslint disable rule and find an alternate solution
-    /* eslint-disable react/display-name */
-    const WithAnimateBase = React.forwardRef(({ ...props }, ref) => {
+    const WithAnimateBase = (props: P) => {
         const ctx = useContext(AnimateContext);
 
         useEffect(() => {
@@ -19,10 +17,13 @@ export const withAnimateBase = <P extends object, R = HTMLDivElement>(
             }
         }, [ctx]);
 
-        return <Component ref={ref} {...(props as P)} />;
-    });
+        // `ref` travels in props in React 19, so there is nothing to forward.
+        return <Component {...props} />;
+    };
 
-    return WithAnimateBase as (
-        props: P & React.RefAttributes<R>
-    ) => React.ReactElement | null;
+    WithAnimateBase.displayName = `withAnimateBase(${
+        Component.displayName || Component.name || "Component"
+    })`;
+
+    return WithAnimateBase;
 };

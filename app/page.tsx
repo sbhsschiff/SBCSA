@@ -12,7 +12,10 @@ const ShimmeringH1 = styled.h1`
 background-image: linear-gradient(90deg, #8C8796 0%, white 40%, #8C8796 60%);
   -webkit-background-clip: text;
   background-clip: text;
-  max-width: 1000px;
+  max-width: 100%;
+  font-size: clamp(2rem, 6vw, 5.25rem);
+  line-height: 1.1;
+  letter-spacing: -0.045em;
   color: transparent;
   animation: shineTitle 3s linear infinite;
   @keyframes shineTitle {
@@ -28,16 +31,16 @@ background-image: linear-gradient(90deg, #8C8796 0%, white 40%, #8C8796 60%);
 export default function Home() {
   return (
     <Animate>
-      <header className="overflow-hidden relative p-8 w-screen h-screen justify-center max-w-screen-xl flex flex-col items-center">
+      <header className="overflow-hidden relative p-8 w-screen min-h-screen justify-center max-w-screen-xl flex flex-col items-center">
         <Animate.Element 
           className='absolute w-full h-full top-0 left-0'
           onActivatedClasses='scale-[2] duration-[1s] delay-500'
           onDeactivatedClasses='scale-[0.75]'
         >
           <Image 
-            className='pointer-events-none'
-            layout='fill'
-            objectFit="contain"
+            className='pointer-events-none object-contain'
+            fill
+            sizes="100vw"
             src="/macbook-air.png"
             alt="Macbook"
           />
@@ -62,26 +65,24 @@ export default function Home() {
           onDeactivatedClasses='opacity-0'
           onActivatedClasses='opacity-100 transition-opacity duration-500'
         >
-          <ShimmeringH1 
-            style={{
-              lineHeight: "1.3",
-              letterSpacing: "-12px",
-            }}
-            className="text-9xl text-white">
-            Computer Science<br/>Academy
+          <ShimmeringH1 className="text-white">
+            Academy of Computer Science<br/>and Artificial Intelligence
           </ShimmeringH1>
+        </Animate.Element>
+        <Animate.Element
+          onDeactivatedClasses='opacity-0'
+          onActivatedClasses='opacity-100 transition-opacity duration-500 delay-200'
+        >
+          <p className="text-xl md:text-2xl lg:text-3xl mt-6 tracking-tight text-[rgba(255,255,255,0.9)]">
+            Teaching the skills that shape the future.
+          </p>
         </Animate.Element>
         <Animate.Element
           onDeactivatedClasses='opacity-0'
           onActivatedClasses='opacity-100 transition-opacity duration-500 delay-300'
         >
-          <h2 
-            style={{
-              letterSpacing: "-2px"
-            }}
-            className="text-3xl mt-10 text-[rgba(255,255,255,0.75)]"
-          >
-            A South Brunswick High School <span className="text-white">Career Academy</span> experience directed by <span className="text-white">Steven Schiff</span>.
+          <h2 className="text-base md:text-xl lg:text-2xl mt-4 tracking-tight text-[rgba(255,255,255,0.6)]">
+            A South Brunswick High School <span className="text-white">Career Academy</span> experience.
           </h2>
         </Animate.Element>
         </Animate.Element>

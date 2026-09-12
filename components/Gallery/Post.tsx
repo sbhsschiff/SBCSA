@@ -27,9 +27,9 @@ const GalleryPost : React.FC<IGalleryPostProps> = ({ post, onClick }) => {
                         <Image
                             src="/logo.png"
                             alt="placeholder"
-                            className="rounded-full"
-                            layout="fill"
-                            objectFit="contain"
+                            className="rounded-full object-contain"
+                            fill
+                            sizes="50px"
                         />
                     </div>
                     <div className="flex flex-col">
@@ -53,8 +53,9 @@ const GalleryPost : React.FC<IGalleryPostProps> = ({ post, onClick }) => {
                     <Image
                         src={post.images[0].src}
                         alt="placeholder"
-                        layout="fill"
-                        objectFit="cover"
+                        className="object-cover"
+                        fill
+                        sizes="400px"
                     />
                 )
                }

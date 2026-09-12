@@ -10,31 +10,32 @@ interface IClass {
     posts: IPost[];
 }
 
-const YearGallery = async ({ params } : { params: { year: string }}) => {
+const YearGallery = async ({ params } : { params: Promise<{ year: string }> }) => {
+    const { year } = await params;
     const data = classes as IClass[];
-    const currentClass = data.find((c) => c.year.toString() === params.year);
+    const currentClass = data.find((c) => c.year.toString() === year);
 
-    currentClass?.posts.forEach(async (post, i) => {
-        if (!post.hasOwnProperty("images")) {
-            currentClass.posts[i].images = [];
-        }
+    // Read each post's images off disk. Builds a new array rather than mutating
+    // the imported JSON, which is module-level and shared across requests.
+    const posts = await Promise.all(
+        (currentClass?.posts ?? []).map(async (post) => {
+            const postDir = path.join(process.cwd(), `public/gallery/${year}/${post.id}`);
+            const entries = await fs.readdir(postDir).catch(() => [] as string[]);
 
-        const postDir = path.join(process.cwd(), `public/gallery/${params.year}/${post.id}`);
-        const postImages = await fs.readdir(postDir);
-
-        for (const img of postImages) {
-            if (!img.endsWith(".jpg")) continue; 
-            currentClass.posts[i].images.push({
-                src: `/gallery/${params.year}/${post.id}/${img}`
-            });
-        }
-    });
+            return {
+                ...post,
+                images: entries
+                    .filter((img) => img.endsWith(".jpg"))
+                    .map((img) => ({ src: `/gallery/${year}/${post.id}/${img}` })),
+            };
+        })
+    );
 
     return (
         <div className="h-screen w-screen relative">
             <GalleryStrip className="mt-4 absolute top-12" />
             <GalleryContainer 
-                slides={currentClass?.posts || []}
+                slides={posts}
             />
         </div>
     )
@@ -43,9 +44,7 @@ const YearGallery = async ({ params } : { params: { year: string }}) => {
 export async function generateStaticParams() {
     return classes
         .filter((c) => c.posts.length > 0)
-        .map(async ({ year }) => {
-            return { params: { year: year.toString() }}
-        });
+        .map(({ year }) => ({ year: year.toString() }));
 }
 
 export default YearGallery;

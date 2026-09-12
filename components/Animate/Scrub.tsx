@@ -20,33 +20,38 @@ interface ScrubProps<T extends ElementType = "div"> {
     to?: gsap.TweenVars;
     start?: string;
     end?: string;
+    /**
+     * Optional element to use as the ScrollTrigger trigger instead of this one.
+     * In React 19 `ref` is an ordinary prop, so no forwardRef wrapper is needed.
+     */
+    ref?: React.RefObject<HTMLElement | null>;
 }
 
-const Scrub = <T extends ElementType = "div">(
-    {
-        as,
-        className,
-        children,
-        from = {},
-        to = {},
-        start,
-        end,
-        ...props
-    }: ScrubProps<T> & ComponentPropsWithoutRef<T>,
-    ref: any
-) => {
+const Scrub = <T extends ElementType = "div">({
+    as,
+    className,
+    children,
+    from = {},
+    to = {},
+    start,
+    end,
+    ref,
+    ...props
+}: ScrubProps<T> & ComponentPropsWithoutRef<T>) => {
     const containerRef = useRef<HTMLDivElement | null>(null);
 
     const [animation, setAnimation] = useState<{
         from?: gsap.TweenVars;
         to?: gsap.TweenVars;
-    }>({ from: undefined, to: undefined });
+    }>(() => ({ from: cloneDeep(from), to: cloneDeep(to) }));
 
-    useEffect(() => {
-        if (!_isEqual(from, animation.from) || !_isEqual(to, animation.to)) {
-            setAnimation({ from: cloneDeep(from), to: cloneDeep(to) });
-        }
-    }, [from, to, animation.from, animation.to]);
+    // Give `from`/`to` a stable identity so the GSAP effects below only re-run
+    // when their contents actually change, not every time the parent re-creates
+    // the object literals. Adjusting state during render is React's recommended
+    // alternative to syncing derived state inside an effect.
+    if (!_isEqual(from, animation.from) || !_isEqual(to, animation.to)) {
+        setAnimation({ from: cloneDeep(from), to: cloneDeep(to) });
+    }
 
     const animateContainer = useCallback(() => {
         if (
@@ -100,14 +105,8 @@ const Scrub = <T extends ElementType = "div">(
     );
 };
 
-export default React.memo(
-    React.forwardRef(Scrub) as <
-        T extends ElementType = "div",
-        R = HTMLDivElement
-    >(
-        props: ScrubProps<T> &
-            React.RefAttributes<R> &
-            ComponentPropsWithoutRef<T>
-    ) => React.ReactElement | null,
-    isEqual
-);
+export default React.memo(Scrub, isEqual) as <
+    T extends ElementType = "div"
+>(
+    props: ScrubProps<T> & ComponentPropsWithoutRef<T>
+) => React.ReactElement | null;

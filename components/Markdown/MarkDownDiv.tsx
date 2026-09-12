@@ -1,3 +1,4 @@
+import type { JSX } from "react";
 import { MarkDownBlock } from "@/common/interfaces/markdown";
 
 interface MarkUpDivProps {
