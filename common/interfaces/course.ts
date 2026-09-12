@@ -5,6 +5,8 @@ export interface Course{
     grade: number,
     weighting: string,
     credits: number, 
+    // Extra items appended to the "11th Grade * AP Weighting * 5 Credits" line.
+    details?: string[],
     image_path?: string,
     description: string,
     links?: Link[],

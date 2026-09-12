@@ -46,7 +46,8 @@
             "weighting": "AP",
             "credits": 5,
             "image_path": "/courses/mobile_app.png",
-            "description": "This course delves into Android app development, covering the lifecycle of applications, activities, fragments, adapters, widgets, broadcasts, services, and multi-threading. Students gain hands-on experience through projects, emphasizing practical skills over written assessments. Additionally, they explore RESTful web services and work with a game engine.",
+            "description": "This course delves into Android app development, covering the lifecycle of applications, activities, fragments, adapters, widgets, broadcasts, services, and multi-threading. Students gain hands-on experience through projects, emphasizing practical skills over written assessments. Additionally, they explore RESTful web services, work with a game engine, explore AI workflows, experiment with LLMs, utilize RAG techniques, and explore MCP server use.",
+            "details": ["Dual Enrollment with Ramapo College"],
             "tags": ["Android", "Java", "Project Based", "Retrieval-Augmented Generation", "Model Context Protocol", "Large Language Models"],
             "links": [
                 {"title": "Learn More", "href": "https://docs.google.com/document/d/1_bEUqfXftBFynBnvy8brLBYIjRL0Tw-mkT-6XnsT_ek/edit#heading=h.yjbpkkyfw3kb"}
@@ -64,7 +65,8 @@
             "weighting": "AP",
             "credits": 5,
             "image_path": "/courses/vr_and_game_design.png",
-            "description": "In this project-based course, students explore VR and game development using the Unity game engine. They create both 2D and 3D games, mastering concepts like physics, animation, networking, and AI. Additionally, students delve into level design, real-time multiplayer games, UI design, and deploying games across various platforms, including VR. The scripting language of choice is C#.",
+            "description": "In this project-based course, students explore VR and game development using the Unity game engine. They create both 2D and 3D games, mastering concepts like physics, animation, networking, and AI. Additionally, students delve into level design, real-time multiplayer games, UI design, and deploying games across various platforms, including VR. The scripting language of choice is C#. Students will also design and train an AI agent that can play against a user or act independently.",
+            "details": ["Certification (Optional via Pearson)"],
             "tags": ["Virtual Reality", "Multiplayer Games", "Project Based", "Unity", "C#", "Training Intelligent Agents"],
             "links": [
                 {"title": "Learn More", "href": "https://docs.google.com/document/d/1_bEUqfXftBFynBnvy8brLBYIjRL0Tw-mkT-6XnsT_ek/edit#heading=h.d0961vl1wpne"},
@@ -87,7 +89,7 @@
             "weighting": "AP",
             "credits": 5,
             "image_path": "/courses/data_structures.png",
-            "description": "This project-focused course is a more formal and more in-depth study of algorithms, data structures, and data abstraction. The use of recursive data structures and dynamically allocated structures is fundamental to the course. Other topics to be covered include graphical user interfaces (GUI) and multimedia (graphics and sound) applications.",
+            "description": "An advanced Java course examining how data representation and algorithm design affect correctness, efficiency, and scalability. Students use and implement core data structures, analyze their operations, compare alternative solutions, and apply them to data-processing and network problems. The course progresses from file processing and time-complexity analysis through union-find, dynamic arrays, stacks, queues, linked lists, hashing, maps, search trees, tries, heaps, and graph algorithms. Programming laboratories, individual written assessments, experimental investigations, and applied projects provide complementary evidence of learning.",
             "tags": ["Java", "Data Structures", "Project Based", "Algorithms", "College/Career Prep"],
             "links": [
                 {"title": "Learn More", "href": "https://docs.google.com/document/d/1_bEUqfXftBFynBnvy8brLBYIjRL0Tw-mkT-6XnsT_ek/edit#heading=h.rdidnkwh61md"}
@@ -105,7 +107,7 @@
             "weighting": "AP",
             "credits": 5,
             "image_path": "/courses/capstone.png",
-            "description": "Focusing on current technology trends, this project-based course equips you with skills essential for internships. Topics span virtualization, version control, memory management, artificial intelligence, client-server relationships, web development, and resume building. Throughout the course, you’ll explore diverse programming languages, IDEs, operating systems, and hardware. At the end of the course all students will create a culminating project that is based on a topic in computer science.",
+            "description": "Focusing on current technology trends, this project-based course equips you with skills essential for internships. Topics span virtualization, version control, memory management, client-server relationships, web development, and resume building. Throughout the course, you’ll explore diverse programming languages, IDEs, operating systems, and hardware. The instructor will also cover how AI agents can improve, computer vision, robotics, agentic workflows, and will add topics as the overall tech stack changes. At the end of the course all students will create a culminating project that is based on a topic selected by the student and approved by the instructor.",
             "tags": ["Java", "C++", "Python", "Web Development", "Career Prep", "Computer Vision", "Robotics", "Large Language Models", "Research and Independent Projects", "Evolutionary Agents", "Client-Server Relationships"],
             "infoLabels": ["This course is only available for students in the computer science academy", "The content of this course will rotate based on industry trends"],
             "links": [

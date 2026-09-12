@@ -50,7 +50,12 @@ export default function CourseItem({ courseInfo }: CourseItemProps) {
             <h1 className="text-xl font-extrabold">{courseInfo.name}</h1>
             <p className="font-normal">{courseInfo.description}</p>
             <div className="flex justify-between font-semibold">
-              {courseInfo.grade}th Grade • {courseInfo.weighting} Weighting • {courseInfo.credits} Credits
+              {[
+                `${courseInfo.grade}th Grade`,
+                `${courseInfo.weighting} Weighting`,
+                `${courseInfo.credits} Credits`,
+                ...(courseInfo.details ?? []),
+              ].join(" • ")}
             </div>
             <div className="flex flex-col">
               <h3 className="font-bold">Prerequisites:</h3>
