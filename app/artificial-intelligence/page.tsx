@@ -28,8 +28,14 @@ const PHOTOS = [
   { src: "/ai/team-selfie.jpg", alt: "Students with a DuckieBot and their laptops during a build session" },
   { src: "/ai/floor-testing.jpg", alt: "Students debugging a DuckieBot alongside the track" },
   { src: "/ai/lab-workstation.jpg", alt: "Students reviewing DuckieBot telemetry at a lab workstation" },
-  { src: "/ai/group.jpg", alt: "The Computer Science Academy cohort around the full Duckietown track", wide: true },
 ];
+
+const GROUP_PHOTO = {
+  src: "/ai/group.jpg",
+  alt: "The Computer Science Academy cohort around the full Duckietown track",
+};
+
+const TILE = "relative aspect-[4/3] overflow-hidden rounded-2xl border border-solid border-[rgba(255,255,255,0.12)]";
 
 export default function ArtificialIntelligence() {
   return (
@@ -46,7 +52,7 @@ export default function ArtificialIntelligence() {
         <p>
           We have a clear mandate not only to teach about current approaches to modern technology use, but also to adapt
           and be flexible as things change in the future. During a student&rsquo;s time in our program, they will start
-          by learning basic coding, but they will also have AI topics integrated into their experience&mdash;and those
+          by learning basic coding, but they will also have AI topics integrated into their experience, and those
           experiences will expand as the student progresses through the program.
         </p>
         <p>
@@ -56,34 +62,40 @@ export default function ArtificialIntelligence() {
           models (LLMs), and autonomous robotics. These topics will adapt as we start to see industry trends emerge.
         </p>
         <p>
-          The premier experience in the Academy is the <span className="text-white">DuckieBots from Duckietown</span>.
-          This small vehicle is powered by a Jetson Nano and is capable of handling all of the necessary AI compute
+          The premier experience in the Academy is the <span className="text-white">DuckieBots</span> from{" "}
+          <a
+            href="https://duckietown.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white underline underline-offset-4 hover:text-viking-gold transition-colors"
+          >
+            Duckietown
+          </a>
+          . This small vehicle is powered by a Jetson Nano and is capable of handling all of the necessary AI compute
           onboard. This university-level engineering experience has been adapted for our students, and students will
           learn about how robots see the world and how to create their own self-driving vehicle. This experience is not
-          about coding; it is about how to solve a problem&mdash;a problem that is novel for the students and requires
-          some serious thought. It will also allow students to experience the full breadth of AI tools.
+          about coding; it is about how to solve a problem, one that is novel for the students and requires some serious
+          thought. It will also allow students to experience the full breadth of AI tools.
         </p>
       </div>
 
-      <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {PHOTOS.map(({ src, alt, wide }) => (
-          <div
-            key={src}
-            className={
-              "relative aspect-[4/3] overflow-hidden rounded-2xl border border-solid border-[rgba(255,255,255,0.12)]" +
-              (wide ? " sm:col-span-2" : "")
-            }
-          >
-            <Image
-              src={src}
-              alt={alt}
-              fill
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-              className="object-cover"
-            />
+      {/* Four photos in a 2x2 square, with the group shot full width beneath. */}
+      <div className="mt-12 grid grid-cols-2 gap-4">
+        {PHOTOS.map(({ src, alt }) => (
+          <div key={src} className={TILE}>
+            <Image src={src} alt={alt} fill sizes="(max-width: 1024px) 50vw, 512px" className="object-cover" />
           </div>
         ))}
       </div>
+
+      <Image
+        src={GROUP_PHOTO.src}
+        alt={GROUP_PHOTO.alt}
+        width={1800}
+        height={1355}
+        sizes="(max-width: 1024px) 100vw, 1024px"
+        className="mt-4 w-full h-auto rounded-2xl border border-solid border-[rgba(255,255,255,0.12)]"
+      />
     </main>
   );
 }
