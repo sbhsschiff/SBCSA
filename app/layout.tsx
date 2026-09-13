@@ -22,10 +22,12 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body id="root" className={clsx(inter.className, "flex items-center flex-col")}>
+      <body id="root" className={clsx(inter.className, "min-h-screen flex items-center flex-col")}>
         <StyledComponentsRegistry>
           <Navbar />
-          {children}
+          <div className="w-full grow flex flex-col items-center">
+            {children}
+          </div>
           <Footer />
         </StyledComponentsRegistry>
       </body>

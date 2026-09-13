@@ -10,12 +10,12 @@ const Gallery = () => {
     const futureClasses = classes.filter((c) => getPhotos(c.year).length === 0);
 
     return (
-        <div className="min-h-screen w-screen relative pb-10">
+        <div className="w-full relative pb-10">
             <GalleryStrip className="mt-4 absolute top-12" />
             <div className="mt-36 px-12">
                 <PageTitle>Gallery</PageTitle>
             </div>
-            <div className="mt-10 px-12 flex gap-12 flex-wrap">
+            <div className="mt-10 px-12 flex gap-8 flex-wrap">
                 {
                     currentClasses.map((c) => (
                         <Folder 
@@ -26,7 +26,7 @@ const Gallery = () => {
                     ))
                 }
             </div>
-            <div className="mt-12 px-12 flex gap-12 flex-wrap">
+            <div className="mt-12 px-12 flex gap-8 flex-wrap">
                 {
                     futureClasses.map((c) => (
                         <Folder 

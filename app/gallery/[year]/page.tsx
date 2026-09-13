@@ -12,7 +12,7 @@ const YearGallery = async ({ params }: { params: Promise<{ year: string }> }) =>
     if (photos.length === 0) notFound();
 
     return (
-        <div className="min-h-screen w-screen relative pb-16">
+        <div className="w-full relative pb-16">
             <GalleryStrip className="mt-4 absolute top-12" />
             <div className="mt-36 px-6 md:px-12">
                 <header className="mb-8">

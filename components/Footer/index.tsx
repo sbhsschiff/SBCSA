@@ -5,7 +5,7 @@ import { FaInstagram } from "react-icons/fa";
 
 const Footer = () => {
     return (
-        <footer className="w-full h-[70px] justify-between md:p-10 p-3 bg-[#0f0f0f] flex items-center space-x-3">
+        <footer className="w-full h-[70px] shrink-0 justify-between md:p-10 p-3 bg-[#0f0f0f] flex items-center space-x-3">
            <div className="flex items-center gap-5">
                 <Image
                     src="/logo.png"

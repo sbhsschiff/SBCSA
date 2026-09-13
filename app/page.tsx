@@ -94,7 +94,7 @@ const Wordmark = styled.h1`
 export default function Home() {
   return (
     <Animate>
-      <header className="overflow-hidden relative p-8 w-full min-h-[calc(100dvh-70px)] justify-center max-w-screen-xl flex flex-col items-center">
+      <header className="overflow-hidden relative p-8 w-full grow justify-center max-w-screen-xl flex flex-col items-center">
         <Animate.Element
           className='absolute w-full h-full top-0 left-0 transition-transform'
           resetAfterTriggered={false}
