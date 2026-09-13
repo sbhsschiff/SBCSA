@@ -104,6 +104,24 @@ const Element = <T extends ElementType = "div">({
         };
     }, [containerRef, triggered, animation]);
 
+    // ScrollTrigger only fires onEnter when an element crosses the start position.
+    // Anything already on screen at mount -- the hero, or any above-the-fold element
+    // after navigating back to a page -- may never receive that callback, which left
+    // `triggered` undefined and the element stuck on onDeactivatedClasses (opacity-0).
+    // Resolving visibility once after mount closes that gap. The functional update
+    // only fills in the undefined case, so a deliberate false is never overridden,
+    // and running in an effect means the first paint still shows the "from" state
+    // and the entrance transition plays.
+    useEffect(() => {
+        const node = ref?.current || containerRef.current;
+        if (!node) return;
+
+        const rect = node.getBoundingClientRect();
+        const isInViewport = rect.top < window.innerHeight && rect.bottom > 0;
+
+        if (isInViewport) setTriggered((prev) => (prev === undefined ? true : prev));
+    }, [ref]);
+
     useEffect(animateContainer, [animateContainer]);
     useEffect(setTriggerListeners, [setTriggerListeners]);
 

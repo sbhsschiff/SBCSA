@@ -15,7 +15,7 @@ const MARK_GLOW =
 const Wordmark = styled.h1`
   --gold-metal: linear-gradient(180deg, #fdf3ce 0%, #ecd695 26%, #d4b25c 55%, #b08f34 78%, #8f7024 100%);
   --gold-bright: linear-gradient(180deg, #fff8e0 0%, #f4e2a6 34%, #e3c96d 68%, #cdb055 100%);
-  --sweepdur: 4.4s;
+  --sweepdur: 1.8s;
 
   margin: 0;
   max-width: 100%;
@@ -52,7 +52,8 @@ const Wordmark = styled.h1`
   .ai {
     background-size: 620px 100%, 100% 100%;
     background-repeat: no-repeat;
-    animation: shineTitle var(--sweepdur) linear infinite;
+    background-position: calc(100% + 620px) 0, 0 0;
+    animation: shineTitle var(--sweepdur) linear 1 both;
   }
   .acs {
     background-image:
@@ -63,16 +64,13 @@ const Wordmark = styled.h1`
     background-image:
       linear-gradient(90deg, rgba(255, 248, 224, 0) 0%, #fff8e0 50%, rgba(255, 248, 224, 0) 100%),
       linear-gradient(#cdb055, #cdb055);
-    /* positive half-cycle delay, so the gold line always follows the white one */
+    /* half-cycle delay, so the gold line always follows the white one */
     animation-delay: calc(var(--sweepdur) / 2);
   }
 
   @keyframes shineTitle {
     0% {
       background-position: -620px 0, 0 0;
-    }
-    38% {
-      background-position: calc(100% + 620px) 0, 0 0;
     }
     100% {
       background-position: calc(100% + 620px) 0, 0 0;
@@ -96,9 +94,10 @@ const Wordmark = styled.h1`
 export default function Home() {
   return (
     <Animate>
-      <header className="overflow-hidden relative p-8 w-screen min-h-screen justify-center max-w-screen-xl flex flex-col items-center">
+      <header className="overflow-hidden relative p-8 w-full min-h-[calc(100dvh-70px)] justify-center max-w-screen-xl flex flex-col items-center">
         <Animate.Element
           className='absolute w-full h-full top-0 left-0 transition-transform'
+          resetAfterTriggered={false}
           onActivatedClasses='scale-[2] duration-[1s] delay-500'
           onDeactivatedClasses='scale-[0.75]'
         >
@@ -113,11 +112,13 @@ export default function Home() {
 
         <Animate.Element
           className='z-30 transition-transform flex flex-col items-center text-center'
+          resetAfterTriggered={false}
           onActivatedClasses='scale-100 duration-500 delay-500'
           onDeactivatedClasses='scale-[0.5]'
         >
           <Animate.Element
             className='translate-y-[40px]'
+            resetAfterTriggered={false}
             onDeactivatedClasses='opacity-0'
             onActivatedClasses='opacity-100 transition-opacity duration-500'
           >
@@ -130,6 +131,7 @@ export default function Home() {
 
           <Animate.Element
             className='relative my-[18px] leading-[0]'
+            resetAfterTriggered={false}
             onDeactivatedClasses='opacity-0'
             onActivatedClasses='opacity-100 transition-opacity duration-500 delay-100'
           >
@@ -149,6 +151,7 @@ export default function Home() {
 
           <Animate.Element
             className='-translate-y-[38px]'
+            resetAfterTriggered={false}
             onDeactivatedClasses='opacity-0'
             onActivatedClasses='opacity-100 transition-opacity duration-500 delay-200'
           >

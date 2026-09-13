@@ -1,31 +1,11 @@
 "use client";
 
-import styled from "styled-components";
-
-const ShimmeringH1 = styled.h1`
-  background-image: linear-gradient(90deg, #8c8796 0%, white 40%, #8c8796 60%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  max-width: 100%;
-  font-size: clamp(2rem, 5vw, 4rem);
-  line-height: 1.1;
-  letter-spacing: -0.045em;
-  color: transparent;
-  animation: shineTitle 3s linear infinite;
-  @keyframes shineTitle {
-    0% {
-      background-position: 0px;
-    }
-    100% {
-      background-position: 1000px;
-    }
-  }
-`;
+import PageTitle from "@/components/PageTitle";
 
 export default function Research() {
   return (
     <main className="w-full max-w-screen-lg px-6 md:px-10 mt-28 md:mt-32 mb-24">
-      <ShimmeringH1 className="text-white">Research and Independent Projects</ShimmeringH1>
+      <PageTitle>Research and Independent Projects</PageTitle>
 
       <div className="mt-8 flex flex-col gap-5 text-base md:text-lg leading-relaxed text-[rgba(255,255,255,0.75)]">
         <p>

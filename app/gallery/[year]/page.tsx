@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import GalleryStrip from "@/components/Gallery/GalleryStrip";
 import MasonryGrid from "@/components/Gallery/MasonryGrid";
+import PageTitle from "@/components/PageTitle";
 import { getPhotos, getYears } from "@/components/Gallery/photos";
 
 const YearGallery = async ({ params }: { params: Promise<{ year: string }> }) => {
@@ -22,7 +23,7 @@ const YearGallery = async ({ params }: { params: Promise<{ year: string }> }) =>
                         &larr; All years
                     </Link>
                     <p className="text-white text-lg font-light uppercase mt-4">Class of</p>
-                    <h1 className="text-white text-6xl font-bold">{year}</h1>
+                    <PageTitle>{year}</PageTitle>
                     <p className="text-[rgba(255,255,255,0.6)] mt-2">
                         {photos.length} photos
                     </p>

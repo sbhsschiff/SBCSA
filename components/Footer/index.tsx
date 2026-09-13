@@ -16,7 +16,7 @@ const Footer = () => {
                 <p
                     className="text-[rgba(255,255,255,.35)]"
                 >
-                    ©2024 SBHS CS Academy. All Rights Reserved.
+                    Est. 2024 SBHS
                 </p>
            </div>
            <div>

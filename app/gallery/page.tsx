@@ -1,5 +1,6 @@
 import GalleryStrip from "@/components/Gallery/GalleryStrip";
 import Folder from "@/components/Gallery/Folder";
+import PageTitle from "@/components/PageTitle";
 import { getPhotos } from "@/components/Gallery/photos";
 
 import { classes } from "@/common/data/gallery.json";
@@ -11,7 +12,10 @@ const Gallery = () => {
     return (
         <div className="min-h-screen w-screen relative pb-10">
             <GalleryStrip className="mt-4 absolute top-12" />
-            <div className="mt-40 px-12 flex gap-12 flex-wrap">
+            <div className="mt-36 px-12">
+                <PageTitle>Gallery</PageTitle>
+            </div>
+            <div className="mt-10 px-12 flex gap-12 flex-wrap">
                 {
                     currentClasses.map((c) => (
                         <Folder 
