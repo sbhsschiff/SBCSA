@@ -12,7 +12,7 @@ const Navbar = () => {
           // WebkitBackdropFilter: "blur(10px)"
         }
       }
-      className="py-3 px-3 md:px-9 fixed top-0 left-0 right-0 flex justify-center items-center z-50 bg-[rgba(255,255,255,0.035)]"
+      className="py-3 px-3 md:px-9 fixed top-0 left-0 right-0 flex justify-center items-center z-50 bg-[#0f0f0f]"
     >
       <span
         aria-hidden="true"
